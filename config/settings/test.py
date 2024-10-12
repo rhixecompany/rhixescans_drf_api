@@ -3,6 +3,7 @@ With these settings, tests run faster.
 """
 
 from .base import *  # noqa: F403
+from .base import BASE_DIR
 from .base import TEMPLATES
 from .base import env
 
@@ -36,15 +37,41 @@ TEMPLATES[0]["OPTIONS"]["debug"] = True  # type: ignore[index]
 MEDIA_URL = "http://media.testserver"
 # django-webpack-loader
 # ------------------------------------------------------------------------------
-WEBPACK_LOADER["DEFAULT"][
-    "LOADER_CLASS"
-] = "webpack_loader.loaders.FakeWebpackLoader"  # noqa: F405
+WEBPACK_LOADER["DEFAULT"]["LOADER_CLASS"] = "webpack_loader.loaders.FakeWebpackLoader"  # noqa: F405
 # Your stuff...
 # ------------------------------------------------------------------------------
 # DATABASES
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
-DATABASES = {"default": env.db("DATABASE_URL")}
+# DATABASES
+# ------------------------------------------------------------------------------
+# https://docs.djangoproject.com/en/dev/ref/settings/#databases
+if (
+    env("POSTGRES_ENGINE", default="django.db.backends.sqlite3")
+    == "django.db.backends.postgresql"
+):
+    DATABASES = {
+        "default": {
+            "ENGINE": env("POSTGRES_ENGINE"),
+            "NAME": env("POSTGRES_DB"),
+            "USER": env("POSTGRES_USER"),
+            "PASSWORD": env("POSTGRES_PASSWORD"),
+            "HOST": env("POSTGRES_HOST"),
+            "PORT": env("POSTGRES_PORT"),
+        },
+    }
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "api.sqlite3",
+            "USER": "",
+            "PASSWORD": "",
+            "HOST": "",
+            "PORT": "",
+        },
+    }
+# DATABASES = {"default": env.db("DATABASE_URL")}  # noqa: ERA001
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
 PAGINATE_BY = 15
 DATETIME_FORMAT = "M d Y, h:i A"
