@@ -9,3 +9,6 @@
 *.py linguist-detectable=false
 # GitHub syntax highlighting
 pixi.lock linguist-language=YAML
+package.json text eol=lf
+package-lock.json text eol=lf
+requirements.txt text eol=lf
