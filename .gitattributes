@@ -1,0 +1,11 @@
+* text=auto
+* html=auto
+* css=auto
+* js=auto
+* py=auto
+*.html linguist-detectable=false
+*.css linguist-detectable=false
+*.js linguist-detectable=false
+*.py linguist-detectable=false
+# GitHub syntax highlighting
+pixi.lock linguist-language=YAML

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% load static i18n %}
+
+{% block title %}
+  {% trans "Index" %}
+{% endblock title %}
+{% block content %}
+  <div style="overflow: hidden;
+              max-width: 1220px;
+              margin: 0 auto;
+              position: relative;
+              padding-bottom: 9rem">
+    <div class="min[925px]:p-0 relative max-[882px]:p-4 max-[786px]:p-0 lg:mx-3.5 lg:my-0">
+      <div class="w-[100%]">
+        <div style="overflow: hidden;
+                    max-width: 1220px;
+                    margin: 0 auto;
+                    position: relative">
+          <div class="min[925px]:p-0 relative max-[882px]:p-4 max-[786px]:p-0 lg:my-0">
+            <div class="float-left w-[100%] max-[600px]:w-[100%] min-[882px]:w-[70%]">
+              <div class="flex h-full min-h-72 justify-center">
+                <div class="w-[100%] min-[768px]:w-[100%] min-[880px]:w-[95%] min-[912px]:w-[96%] lg:w-[100%]">
+                  <div class="overflow-hidden">
+                    {% include "partials/pages/index/carousel.html" %}
+                    {% include "partials/pages/index/weak.html" %}
+                  </div>
+                  {% include "partials/pages/index/features.html" %}
+                  {% include "partials/pages/index/grids.html" %}
+                </div>
+              </div>
+            </div>
+            {% include "partials/pages/index/accordian.html" %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

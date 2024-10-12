@@ -1,0 +1,84 @@
+{% load static i18n %}
+
+<div class="float-right w-[100%] max-[600px]:w-[100%] min-[882px]:w-[30%]">
+  <div class="mb-[18px] rounded-[3px] bg-[#222] min-[855px]:mr-3 lg:ml-[15px] lg:mr-0">
+    <div class="font-500 relative flex justify-between border-b-[1px] border-[#312f40] bg-[#222222] px-[15px] py-[8px] align-baseline">
+      <h3 class="m-0 text-[15px] font-semibold leading-5 text-white">Popular</h3>
+    </div>
+    <div class="bg-[#222222]">
+      <div dir="ltr" data-orientation="horizontal">
+        <div class="px-2.5 pt-[11px]">
+          <div role="tablist"
+               aria-orientation="horizontal"
+               class="text-muted-foreground grid h-8 w-[100%] grid-cols-3 items-center justify-center rounded-[2px] bg-[#333] p-1 px-1.5"
+               tabindex="0"
+               data-orientation="horizontal"
+               style="outline: none">
+            <button type="button"
+                    role="tab"
+                    aria-selected="true"
+                    aria-controls="radix-:R19uduja:-content-weekly"
+                    data-state="active"
+                    id="radix-:R19uduja:-trigger-weekly"
+                    class="ring-offset-background focus-visible:ring-ring inline-flex h-[22px] items-center justify-center whitespace-nowrap rounded-sm px-8 py-1.5 text-[12px] font-normal text-white transition-all hover:text-themecolor focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-themecolor data-[state=active]:text-white data-[state=active]:shadow-sm data-[state=active]:hover:text-white"
+                    tabindex="-1"
+                    data-orientation="horizontal"
+                    data-radix-collection-item="">Weekly</button>
+            <button type="button"
+                    role="tab"
+                    aria-selected="false"
+                    aria-controls="radix-:R19uduja:-content-monthly"
+                    data-state="inactive"
+                    id="radix-:R19uduja:-trigger-monthly"
+                    class="ring-offset-background focus-visible:ring-ring inline-flex h-[22px] items-center justify-center whitespace-nowrap rounded-sm px-8 py-1.5 text-[12px] font-normal text-white transition-all hover:text-themecolor focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-themecolor data-[state=active]:text-white data-[state=active]:shadow-sm data-[state=active]:hover:text-white"
+                    tabindex="-1"
+                    data-orientation="horizontal"
+                    data-radix-collection-item="">Monthly</button>
+            <button type="button"
+                    role="tab"
+                    aria-selected="false"
+                    aria-controls="radix-:R19uduja:-content-all"
+                    data-state="inactive"
+                    id="radix-:R19uduja:-trigger-all"
+                    class="ring-offset-background focus-visible:ring-ring inline-flex h-[22px] items-center justify-center whitespace-nowrap rounded-sm px-8 py-1.5 text-[12px] font-normal text-white transition-all hover:text-themecolor focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-themecolor data-[state=active]:text-white data-[state=active]:shadow-sm data-[state=active]:hover:text-white"
+                    tabindex="-1"
+                    data-orientation="horizontal"
+                    data-radix-collection-item="">All</button>
+          </div>
+        </div>
+        <div>
+          <div data-state="active"
+               data-orientation="horizontal"
+               role="tabpanel"
+               aria-labelledby="radix-:R19uduja:-trigger-weekly"
+               id="radix-:R19uduja:-content-weekly"
+               tabindex="0"
+               class="ring-offset-background focus-visible:ring-ring mt-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+               style="animation-duration: 0s">{% include "partials/pages/index/accordian_item.html" %}</div>
+        </div>
+        <div>
+          <div data-state="inactive"
+               data-orientation="horizontal"
+               role="tabpanel"
+               aria-labelledby="radix-:R19uduja:-trigger-monthly"
+               hidden=""
+               id="radix-:R19uduja:-content-monthly"
+               tabindex="0"
+               class="ring-offset-background focus-visible:ring-ring mt-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2">
+          </div>
+        </div>
+        <div>
+          <div data-state="inactive"
+               data-orientation="horizontal"
+               role="tabpanel"
+               aria-labelledby="radix-:R19uduja:-trigger-all"
+               hidden=""
+               id="radix-:R19uduja:-content-all"
+               tabindex="0"
+               class="ring-offset-background focus-visible:ring-ring mt-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,2 @@
+config_file=.pylintrc
+force_venv_activation=True

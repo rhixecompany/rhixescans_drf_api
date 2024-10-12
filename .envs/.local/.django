@@ -1,0 +1,48 @@
+# General
+# ------------------------------------------------------------------------------
+DJANGO_READ_DOT_ENV_FILE=True
+DJANGO_SETTINGS_MODULE=config.settings.local
+DJANGO_SECRET_KEY=nwCbaoSPwWKM2RMvitxkEOD6GsKVKtJSOXXkeV4MRIpHFUeYvM81mYkP83uKYYkv
+DJANGO_ADMIN_URL=PM487obC4WlFbfQg7JKsIhkNaM6G0NU4/
+DJANGO_ALLOWED_HOSTS=www.rhixescans.online,rhixescans.online,127.0.0.1,localhost
+DJANGO_DEBUG=True
+USE_DOCKER=yes
+IPYTHONDIR=/app/.ipython
+# Security
+# ------------------------------------------------------------------------------
+# TIP: better off using DNS, however, redirect is OK too
+DJANGO_SECURE_SSL_REDIRECT=False
+
+# Email
+# ------------------------------------------------------------------------------
+DJANGO_SERVER_EMAIL=rhixecompany@gmail.com
+DJANGO_EMAIL_HOST=smtp.gmail.com
+DJANGO_EMAIL_PORT=465
+DJANGO_EMAIL_HOST_USER=rhixecompany@gmail.com
+DJANGO_EMAIL_HOST_PASSWORD=dfmh gjgd fpdj rszt
+DJANGO_EMAIL_BACKEND=django.core.mail.backends.console.EmailBackend
+
+# GCP
+# ------------------------------------------------------------------------------
+GOOGLE_APPLICATION_CREDENTIALS=
+DJANGO_GCP_STORAGE_BUCKET_NAME=
+
+# django-allauth
+# ------------------------------------------------------------------------------
+DJANGO_ACCOUNT_ALLOW_REGISTRATION=True
+
+# Gunicorn
+# ------------------------------------------------------------------------------
+WEB_CONCURRENCY=4
+
+# Redis
+# ------------------------------------------------------------------------------
+REDIS_URL=redis://redis:6379/0
+
+# Celery
+# ------------------------------------------------------------------------------
+CELERY_BROKER_URL=redis://192.169.0.5:6379/0
+
+# Flower
+CELERY_FLOWER_USER=xEJArKFgSkPZVliwFGNAFcEXqbrrcmcE
+CELERY_FLOWER_PASSWORD=1f39f0DqA7wj3jpucXX6fKy0VzdKVnnwwWeF52czOrg1SpFxtFGEt2EAHzr2R6a5

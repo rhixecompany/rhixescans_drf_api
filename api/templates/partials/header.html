@@ -1,0 +1,128 @@
+{% load static i18n %}
+
+<header class="bg-themecolor sm:mb-3 lg:mb-[35px]">
+  <div class="flex h-[55px] items-center justify-between"
+       style="max-width: 1220px;
+              padding: 0px 20px;
+              margin: 0 auto">
+    <div class="flex items-center gap-x-6">
+      <a class="flex" href="https://asuracomic.net/"><span class="h-10 w-10 sm:h-12 sm:w-12">
+        <img alt="Asura Logo"
+             fetchpriority="high"
+             width="0"
+             height="0"
+             decoding="async"
+             data-nimg="1"
+             class="object-cover"
+             style="color: transparent;
+                    width: 100%;
+                    height: auto;
+                    max-height: 50px"
+             src="{% static 'logos/logo.webp' %}" />
+      </span></a>
+      <ul class="m-0 hidden flex-row p-0 md:flex lg:mt-0 lg:space-x-3">
+        <li>
+          <a href="https://asuracomic.net/"><span class="block pb-0 pl-[8px] pr-[10px] pt-0 text-[13px] leading-[42px] tracking-wider text-white hover:bg-gray-900 hover:bg-opacity-40 hover:text-white">Home</span></a>
+        </li>
+        <li>
+          <a href="https://asuracomic.net/bookmarks"><span class="block pb-0 pl-[8px] pr-[10px] pt-0 text-[13px] leading-[42px] tracking-wider text-white hover:bg-gray-900 hover:bg-opacity-40 hover:text-white">Bookmarks</span></a>
+        </li>
+        <li>
+          <a href="https://asuracomic.net/series?page=1"><span class="block pb-0 pl-[8px] pr-[10px] pt-0 text-[13px] leading-[42px] tracking-wider text-white hover:bg-gray-900 hover:bg-opacity-40 hover:text-white">Comics</span></a>
+        </li>
+      </ul>
+    </div>
+    <div class="flex w-full items-center gap-x-2 md:gap-x-[5px]">
+      <div class="flex w-full items-center justify-end">
+        <input type="text"
+               class="relative w-[95%] rounded-lg border-[1px] border-black bg-[#16151D] px-4 py-1 text-white outline-none sm:w-[55%] sm:py-2 md:w-[55%] lg:w-[40%]"
+               placeholder="Search" />
+        <svg class="absolute h-8 w-8 cursor-not-allowed pt-1 text-white"
+             viewBox="0 0 20 20"
+             fill="currentColor"
+             xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 6.5C10 8.433 8.433 10 6.5 10C4.567 10 3 8.433 3 6.5C3 4.567 4.567 3 6.5 3C8.433 3 10 4.567 10 6.5ZM9.30884 10.0159C8.53901 10.6318 7.56251 11 6.5 11C4.01472 11 2 8.98528 2 6.5C2 4.01472 4.01472 2 6.5 2C8.98528 2 11 4.01472 11 6.5C11 7.56251 10.6318 8.53901 10.0159 9.30884L12.8536 12.1464C13.0488 12.3417 13.0488 12.6583 12.8536 12.8536C12.6583 13.0488 12.3417 13.0488 12.1464 12.8536L9.30884 10.0159Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd">
+          </path>
+        </svg>
+      </div>
+      <div class="z-50 mr-1"></div>
+      <div class="hidden md:block">
+        <a class="flex h-9 w-9 items-center justify-center rounded-full bg-[#121212] sm:h-10 sm:w-16 sm:rounded-lg"
+           href="https://asuracomic.net/login">
+          <button class="ring-offset-background focus-visible:ring-ring flex h-10 w-20 items-center justify-center gap-0.5 whitespace-nowrap rounded-md bg-[#6F2598] px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-[#5a1f78] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 width="24"
+                 height="24"
+                 viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="2"
+                 stroke-linecap="round"
+                 stroke-linejoin="round"
+                 class="lucide lucide-user-round h-3 w-3">
+              <circle cx="12" cy="8" r="5"></circle>
+              <path d="M20 21a8 8 0 0 0-16 0"></path>
+            </svg>
+            <p>Login</p>
+          </button>
+        </a>
+      </div>
+      <div class="z-50 block md:hidden">
+        <div class="text-right">
+          <a class="flex h-9 w-9 items-center justify-center rounded-full bg-[#121212] sm:h-10 sm:w-10"
+             href="https://asuracomic.net/login">
+            <div class="h-9 w-9 rounded-full sm:h-10 sm:w-10">
+              <img alt="profile"
+                   loading="lazy"
+                   width="36"
+                   height="36"
+                   decoding="async"
+                   data-nimg="1"
+                   class="h-full w-full rounded-full object-cover"
+                   src="{% static 'files/profile-placeholder.svg' %}"
+                   style="color: transparent" />
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="block md:hidden">
+        <button class="mt-[6px] text-white">
+          <svg class="h-8 w-8"
+               fill="currentColor"
+               stroke="currentColor"
+               viewBox="0 0 24 24"
+               xmlns="http://www.w3.org/2000/svg">
+            <g class="">
+            <rect x="4" y="5" width="16" height="2" rx="0.2" ry="0.2"></rect>
+            <rect x="4" y="11" width="16" height="2" rx="0.2" ry="0.2"></rect>
+            <rect x="4" y="17" width="16" height="2" rx="0.2" ry="0.2"></rect>
+            </g>
+          </svg>
+        </button>
+      </div>
+      {% comment %}
+      <div class="fixed inset-0 z-50 block md:hidden">
+        <div class="flex justify-end bg-[#1E1D20] bg-opacity-90 p-4">
+          <button class="text-white focus:outline-none">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          </button>
+        </div>
+        <div class="items-left flex h-full flex-col bg-[#1E1D20]">
+          <ul class="font-small m-0 mx-6 flex flex-col p-0 lg:mt-0 lg:flex-row lg:space-x-8">
+            <li>
+              <a class="inline-flex w-32 items-center px-2 hover:bg-black hover:bg-opacity-40 hover:text-white" href="/"><img alt="Menu Icon" loading="lazy" width="18" height="18" decoding="async" data-nimg="1" class="size-[18px]" src="/images/home.svg" style="color: transparent" /><span class="text-md block font-semibold text-white" style="padding: 8px">Home</span></a>
+            </li>
+            <li>
+              <a class="inline-flex w-32 items-center px-2 hover:bg-black hover:bg-opacity-40 hover:text-white" href="/bookmarks"><img alt="Menu Icon" loading="lazy" width="18" height="18" decoding="async" data-nimg="1" class="size-[18px]" src="/images/bookmark.svg" style="color: transparent" /><span class="text-md block font-semibold text-white" style="padding: 8px">Bookmarks</span></a>
+            </li>
+            <li>
+              <a class="inline-flex w-32 items-center px-2 hover:bg-black hover:bg-opacity-40 hover:text-white" href="/series?page=1"><img alt="Menu Icon" loading="lazy" width="18" height="18" decoding="async" data-nimg="1" class="size-[18px]" src="/images/book-open-cover.svg" style="color: transparent" /><span class="text-md block font-semibold text-white" style="padding: 8px">Comics</span></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      {% endcomment %}
+    </div>
+  </div>
+</header>
+{% include "partials/message.html" %}

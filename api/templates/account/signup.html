@@ -1,0 +1,156 @@
+{% extends "account/base_entrance.html" %}
+
+{% load static i18n widget_tweaks allauth account socialaccount %}
+
+{% block head_title %}
+  {% trans "Sign Up" %}
+{% endblock head_title %}
+{% block content %}
+  <p class="text-center mb-6 text-sm">{% trans "Register your account" %}</p>
+  <form method="post" enctype="multipart/form-data" autocomplete="on">
+    {% csrf_token %}
+    {% for hidden_field in form.hidden_fields %}{{ hidden_field.errors }} {{ hidden_field }}{% endfor %}
+    {{ form.non_form_errors }}
+    <div class="mb-4 relative">
+      <svg xmlns="http://www.w3.org/2000/svg"
+           viewBox="0 0 24 24"
+           fill="currentColor"
+           aria-hidden="true"
+           data-slot="icon"
+           class="absolute left-3 top-6 transform -translate-y-1/2 size-4  mr-10">
+        <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clip-rule="evenodd">
+        </path>
+      </svg>
+      <div class="space-y-2">
+        {% render_field form.username class='flex h-10 border border-input text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 w-full p-6 pl-10 bg-secondarybackground text-white placeholder-gray-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-white' %}
+        <div class="ml-3 text-xs text-red-400">{{ form.username.errors }}</div>
+      </div>
+    </div>
+    <div class="mb-4 relative">
+      <svg xmlns="http://www.w3.org/2000/svg"
+           viewBox="0 0 24 24"
+           fill="currentColor"
+           aria-hidden="true"
+           data-slot="icon"
+           class="absolute left-3 top-6 transform -translate-y-1/2 size-4 mr-10">
+        <path d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z"></path>
+        <path d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z"></path>
+      </svg>
+      <div class="space-y-2">
+        {% render_field form.email class='flex h-10 border border-input text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 w-full p-6 pl-10 bg-secondarybackground text-white placeholder-gray-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-white' %}
+        <div class="ml-3 text-xs text-red-400">{{ form.email.errors }}</div>
+      </div>
+    </div>
+    <div class="mb-4 relative">
+      <svg xmlns="http://www.w3.org/2000/svg"
+           viewBox="0 0 24 24"
+           fill="currentColor"
+           aria-hidden="true"
+           data-slot="icon"
+           class="absolute left-3 top-6 transform -translate-y-1/2 size-4  mr-10">
+        <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clip-rule="evenodd">
+        </path>
+      </svg>
+      <div class="space-y-2">
+        {% render_field form.images class='flex h-10 border border-input text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 w-full p-2 pl-10 bg-secondarybackground text-white placeholder-gray-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-white' %}
+        <div class="ml-3 text-xs text-red-400">{{ form.images.errors }}</div>
+      </div>
+    </div>
+    <div class="mb-4 relative">
+      <svg xmlns="http://www.w3.org/2000/svg"
+           viewBox="0 0 24 24"
+           fill="currentColor"
+           aria-hidden="true"
+           data-slot="icon"
+           class="absolute size-4 left-3 top-6 transform -translate-y-1/2 mr-10">
+        <path fill-rule="evenodd" d="M12 1.5a5.25 5.25 0 0 0-5.25 5.25v3a3 3 0 0 0-3 3v6.75a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3v-6.75a3 3 0 0 0-3-3v-3c0-2.9-2.35-5.25-5.25-5.25Zm3.75 8.25v-3a3.75 3.75 0 1 0-7.5 0v3h7.5Z" clip-rule="evenodd">
+        </path>
+      </svg>
+      <div class="space-y-2">
+        {% render_field form.password1 class='flex h-10 border border-input text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 w-full p-6 pl-10 bg-secondarybackground text-white placeholder-gray-400 rounded-xl focus:outline-none focus:ring-1 focus:ring-white' %}
+        <div class="ml-3 text-xs text-red-400">{{ form.password1.errors }}</div>
+        <svg xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 24 24"
+             fill="currentColor"
+             aria-hidden="true"
+             data-slot="icon"
+             class="cursor-pointer absolute right-3 top-4 transform -translate-y-1/2 size-4">
+          <path d="M3.53 2.47a.75.75 0 0 0-1.06 1.06l18 18a.75.75 0 1 0 1.06-1.06l-18-18ZM22.676 12.553a11.249 11.249 0 0 1-2.631 4.31l-3.099-3.099a5.25 5.25 0 0 0-6.71-6.71L7.759 4.577a11.217 11.217 0 0 1 4.242-.827c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113Z">
+          </path>
+          <path d="M15.75 12c0 .18-.013.357-.037.53l-4.244-4.243A3.75 3.75 0 0 1 15.75 12ZM12.53 15.713l-4.243-4.244a3.75 3.75 0 0 0 4.244 4.243Z">
+          </path>
+          <path d="M6.75 12c0-.619.107-1.213.304-1.764l-3.1-3.1a11.25 11.25 0 0 0-2.63 4.31c-.12.362-.12.752 0 1.114 1.489 4.467 5.704 7.69 10.675 7.69 1.5 0 2.933-.294 4.242-.827l-2.477-2.477A5.25 5.25 0 0 1 6.75 12Z">
+          </path>
+        </svg>
+      </div>
+    </div>
+    <div class="mb-4 relative">
+      <svg xmlns="http://www.w3.org/2000/svg"
+           viewBox="0 0 24 24"
+           fill="currentColor"
+           aria-hidden="true"
+           data-slot="icon"
+           class="absolute size-4 left-3 top-6 transform -translate-y-1/2 mr-10">
+        <path fill-rule="evenodd" d="M12 1.5a5.25 5.25 0 0 0-5.25 5.25v3a3 3 0 0 0-3 3v6.75a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3v-6.75a3 3 0 0 0-3-3v-3c0-2.9-2.35-5.25-5.25-5.25Zm3.75 8.25v-3a3.75 3.75 0 1 0-7.5 0v3h7.5Z" clip-rule="evenodd">
+        </path>
+      </svg>
+      <div class="space-y-2">
+        <div>
+          {% render_field form.password2 class='flex h-10 border border-input text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 w-full p-6 pl-10 bg-secondarybackground text-white placeholder-gray-400 rounded-xl focus:outline-none focus:ring-1 focus:ring-white' %}
+          <div class="ml-3 text-xs text-red-400">{{ form.password2.errors }}</div>
+          <svg xmlns="http://www.w3.org/2000/svg"
+               viewBox="0 0 24 24"
+               fill="currentColor"
+               aria-hidden="true"
+               data-slot="icon"
+               class="cursor-pointer absolute right-3 top-6 transform -translate-y-1/2 size-4">
+            <path d="M3.53 2.47a.75.75 0 0 0-1.06 1.06l18 18a.75.75 0 1 0 1.06-1.06l-18-18ZM22.676 12.553a11.249 11.249 0 0 1-2.631 4.31l-3.099-3.099a5.25 5.25 0 0 0-6.71-6.71L7.759 4.577a11.217 11.217 0 0 1 4.242-.827c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113Z">
+            </path>
+            <path d="M15.75 12c0 .18-.013.357-.037.53l-4.244-4.243A3.75 3.75 0 0 1 15.75 12ZM12.53 15.713l-4.243-4.244a3.75 3.75 0 0 0 4.244 4.243Z">
+            </path>
+            <path d="M6.75 12c0-.619.107-1.213.304-1.764l-3.1-3.1a11.25 11.25 0 0 0-2.63 4.31c-.12.362-.12.752 0 1.114 1.489 4.467 5.704 7.69 10.675 7.69 1.5 0 2.933-.294 4.242-.827l-2.477-2.477A5.25 5.25 0 0 1 6.75 12Z">
+            </path>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="mb-4 flex items-center justify-between">
+      <div>
+        <div class="flex items-center">
+          {% render_field form.remember class='ring-offset-background focus-visible:ring-ring data-[state=checked]:text-primary-foreground peer size-4 shrink-0 rounded border border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary' %}
+          <div class="ml-3 text-xs text-red-400">{{ form.remember.errors }}</div>
+          <span class="ml-2 pt-[-300px] text-xs font-semibold">{{ form.remember.label }}</span>
+        </div>
+      </div>
+      {{ form.remember.help_text|safe }}
+    </div>
+    <button type="submit"
+            class="w-full py-2 bg-purple-600 text-white rounded-lg font-semibold text-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-600">
+      {% trans "Register" %}
+    </button>
+  </form>
+  <div class="text-center text-xs text-gray-400 mt-4">
+    {% trans "Already have Account?" %} <a class="text-white text-xs font-semibold hover:underline"
+    href="{% url 'account_login' %}">{% trans "Login" %}</a>
+  </div>
+  <div class="flex items-center my-4">
+    <div class="flex-grow border-t border-[#35383F]"></div>
+    <span class="mx-2 font-semibold text-sm">{% trans "Or continue with" %}</span>
+    <div class="flex-grow border-t border-[#35383F]"></div>
+  </div>
+  <a href="{% provider_login_url 'google' %}"
+     class="flex flex-row justify-center space-y-4 bg-secondarybackground p-2 border-[2px] border-[#121212] rounded-[18px] cursor-pointer">
+    <div class="flex items-center justify-center  w-96 h-10 rounded-full">
+      <img alt="Google"
+           loading="lazy"
+           width="6"
+           height="6"
+           decoding="async"
+           data-nimg="1"
+           class="h-6 w-6 mr-3"
+           src='{% static "svg/google.webp" %}'
+           style="color: transparent" />
+      {% trans "Continue with Google" %}
+    </div>
+  </a>
+{% endblock content %}

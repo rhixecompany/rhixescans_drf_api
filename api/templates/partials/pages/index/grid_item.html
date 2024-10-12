@@ -1,0 +1,63 @@
+{% load static i18n %}
+
+<div x-data="{comics: [],  }"
+     x-init="comics = await (await fetch('/api/comics/')).json()"
+     class="grid grid-cols-1 grid-rows-1 bg-[#222222] p-3 pb-0 sm:grid-cols-2">
+  <template x-for="comic in comics">
+    <div class="w-full border-b-[1px] border-b-[#312f40] p-1 pb-3 pt-1">
+      <div class="m-2 grid grid-cols-12 grid-rows-1">
+        <div class="col-span-3">
+          <div class="relative h-32 w-[100%]">
+            <a :href="comic.highlight">
+              <img loading="lazy"
+                   width="0"
+                   height="0"
+                   decoding="async"
+                   data-nimg="1"
+                   class="rounded-md object-cover"
+                   :src="comic.images.image"
+                   :alt="comic.images.comic_slug"
+                   style="color: transparent;
+                          width: 100px;
+                          max-height: 130px;
+                          object-fit: cover;
+                          object-position: 100% 25%" />
+            </a>
+          </div>
+        </div>
+        <div class="col-span-9 space-y-1.5 overflow-hidden pl-[9px]">
+          <span class="text-[15px] font-medium hover:cursor-pointer hover:text-themecolor">
+            <a x-text="comic.title" :href="comic.highlight"></a>
+          </span>
+          <div class="flex list-disc flex-col gap-y-1.5">
+            <template x-for="chapter in comic.chapters">
+              <span class="mt-1 inline-block flex-1">
+                <div class="flex flex-row justify-between rounded-sm">
+                  <div class="flex text-sm font-medium text-[#999] hover:text-white">
+                    <a href="https://asuracomic.net/series/dungeon-defense-d22d53ea/chapter/37"
+                       class=""><span class="flex">
+                      <svg width="15"
+                           height="15"
+                           viewBox="0 0 15 15"
+                           fill="none"
+                           xmlns="http://www.w3.org/2000/svg"
+                           class="mt-[2px] text-[#0e6860]">
+                        <path d="M9.875 7.5C9.875 8.81168 8.81168 9.875 7.5 9.875C6.18832 9.875 5.125 8.81168 5.125 7.5C5.125 6.18832 6.18832 5.125 7.5 5.125C8.81168 5.125 9.875 6.18832 9.875 7.5Z" fill="currentColor">
+                        </path>
+                      </svg>
+                      <div class="flex gap-1">
+                        <p x-text='chapter.name' class="w-[80px]"></p>
+                      </div>
+                    </span></a>
+                  </div>
+                  <p x-text='chapter.updated_at'
+                     class="ml-2 flex items-end text-[12px] text-[#555555]"></p>
+                </div>
+              </span>
+            </template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</div>

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% load static i18n %}
+
+{% block title %}
+    {% trans 'terms' %}
+{% endblock title %}
+{% block content %}
+    <style>
+      .start {
+        color: red;
+      }
+
+      .end {
+        color: blue;
+      }
+    </style>
+    <div class='grid grid-cols-1 px-4 pt-6 '>
+        <div class="grid grid-cols-1 px-4 pt-6 ">
+            <div class="col-span-full mb-4 xl:mb-2">
+                <div x-data="{count: $persist(0)}" class="mb-3">
+                    <div>
+                        <input class='border-input ring-offset-background placeholder:text-muted-foreground bg-secondarybackground flex h-10 w-full rounded-xl border p-6 pl-10 text-sm text-white placeholder-gray-400 file:border-0 file:bg-transparent file:text-sm file:font-medium focus:outline-none focus:ring-1 focus:ring-white focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50'
+                               type="number"
+                               x-model="count" />
+                    </div>
+                    <br />
+                    <div class="flex  flex-wrap items-center justify-between gap-1 py-4 ">
+                        <button class="inline-flex text-md  rounded-lg bg-purple-600 px-2 font-semibold text-white hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-600"
+                                @click="count++">Increment</button>
+                        <button class="inline-flex text-md  rounded-lg bg-blue-600 py-2 font-semibold text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                                @click="count *= count">Square</button>
+                        <button class="inline-flex text-md  rounded-lg bg-red-600 py-2 font-semibold text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-600"
+                                @click="count--">Subtract</button>
+                    </div>
+                    <div>
+                        <span class="ml-2 pt-[-300px] text-xs font-semibold" x-text="count"></span>
+                    </div>
+                </div>
+                <div x-data="{users: $persist([]), showImages: false }"
+                     x-init="users = await (await fetch('/api/users/')).json()">
+                    <button class="text-md w-full rounded-lg bg-purple-600 py-2 font-semibold text-white hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-600"
+                            @click="showImages = !showImages"
+                            x-text="showImages ? 'Hide Images' : 'Show Images'"></button>
+                    <template x-for="user in users.data">
+                        <div>
+                            <p class="ml-2 pt-[-300px] text-xs font-semibold"
+                               x-text="user.username"
+                               :class="user.username.startsWith('a') ? 'text-danger' : 'text-success'"></p>
+                            <img x-show="showImages" :src="user.images" x-transition.duration.1500ms />
+                            <hr />
+                        </div>
+                    </template>
+                </div>
+                <div class="mb-3">
+                    <button class="text-md w-full rounded-lg bg-pink-600 py-2 font-semibold text-white hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-600"
+                            x-data
+                            @click="$store.darkMode.toggle()">Toggle Dark Mode</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

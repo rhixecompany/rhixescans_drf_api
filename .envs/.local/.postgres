@@ -1,0 +1,9 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=localhost
+POSTGRES_PORT=5432
+POSTGRES_DB=api
+POSTGRES_USER=bot
+POSTGRES_PASSWORD=20010709
+POSTGRES_ENGINE=django.db.backends.postgresql
+##POSTGRES_ENGINE=django.db.backends.sqlite3

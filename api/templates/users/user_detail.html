@@ -1,0 +1,275 @@
+{% extends "base.html" %}
+
+{% load static i18n %}
+
+{% block title %}
+  {% trans 'User:' %} {% trans user.username %}
+{% endblock title %}
+{% block content %}
+  <div class="mx-auto items-center justify-between p-2">
+    <div class="grid grid-cols-1 px-4 pt-6 dark:bg-gray-900 xl:grid-cols-3 xl:gap-4">
+      <div class="col-span-full mb-4 xl:mb-2">
+        <nav class="mb-5 flex" aria-label="Breadcrumb">
+          <ol class="inline-flex items-center space-x-1 text-sm font-medium md:space-x-2">
+            <li class="inline-flex items-center">
+              <a href="{% url 'index' %}"
+                 class="inline-flex items-center text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-white">
+                <svg class="mr-2.5 h-5 w-5"
+                     fill="currentColor"
+                     viewBox="0 0 20 20"
+                     xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z">
+                  </path>
+                </svg>
+                {% trans ' Home' %}
+              </a>
+            </li>
+            <li>
+              <div class="flex items-center">
+                <svg class="h-6 w-6 text-gray-400"
+                     fill="currentColor"
+                     viewBox="0 0 20 20"
+                     xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd">
+                  </path>
+                </svg>
+                <a href="#"
+                   class="ml-1 text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-white md:ml-2">{% trans 'Users' %}</a>
+              </div>
+            </li>
+            <li>
+              <div class="flex items-center">
+                <svg class="h-6 w-6 text-gray-400"
+                     fill="currentColor"
+                     viewBox="0 0 20 20"
+                     xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd">
+                  </path>
+                </svg>
+                <span class="ml-1 text-gray-400 dark:text-gray-500 md:ml-2"
+                      aria-current="page">{% trans 'Settings' %}</span>
+              </div>
+            </li>
+          </ol>
+        </nav>
+        <h1 class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">
+          {% trans user.username %} {% trans 'settings' %}
+        </h1>
+      </div>
+      <!-- Right Content -->
+      <div class="col-span-full xl:col-auto">
+        <div class="mb-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6 2xl:col-span-2">
+          <div class="items-center sm:flex sm:space-x-4 xl:block xl:space-x-0 2xl:flex 2xl:space-x-4">
+            {% if avatar.images %}
+              <img class="mb-4 h-28 w-28 rounded-lg sm:mb-0 xl:mb-4 2xl:mb-0"
+                   src=" {{ avatar.images.url }} "
+                   alt="{{ request.user.username }} picture" />
+            {% else %}
+              <img class="mb-4 h-28 w-28 rounded-lg sm:mb-0 xl:mb-4 2xl:mb-0"
+                   src="{% static 'users/joseph-mcfall.png' %}"
+                   alt="{{ request.user.username }} picture" />
+            {% endif %}
+            <div>
+              <h3 class="mb-1 text-xl font-bold text-gray-900 dark:text-white">{{ request.user.email }}</h3>
+              <div class="mb-4 text-sm text-gray-500 dark:text-gray-400">{{ request.user.username }}</div>
+              <div class="flex items-center space-x-4">
+                <a href="{% url 'account_email' %}"
+                   class="inline-flex items-center rounded-lg bg-primary-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                  <svg class="-ml-1 mr-2 h-4 w-4"
+                       fill="currentColor"
+                       viewBox="0 0 20 20"
+                       xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5.5 13a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 13H11V9.413l1.293 1.293a1 1 0 001.414-1.414l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13H5.5z">
+                    </path>
+                    <path d="M9 13h2v5a1 1 0 11-2 0v-5z"></path>
+                  </svg>
+                  {% trans 'E-Mail' %}
+                </a>
+                <a href="{% url 'mfa_index' %}"
+                   class="rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700">
+                  {% trans 'MFA' %}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mb-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6 2xl:col-span-2">
+          <div class="flow-root">
+            <h3 class="text-xl font-semibold dark:text-white">{% trans "My account" %}</h3>
+            <ul class="mb-6 divide-y divide-gray-200 dark:divide-gray-700">
+              <li class="py-4">
+                <div class="align-center flex justify-between xl:block 2xl:flex 2xl:space-x-4">
+                  <div class="flex space-x-4 xl:mb-4 2xl:mb-0">
+                    <div>
+                      {% if avatar.images %}
+                        <img class="h-6 w-6 rounded-full"
+                             src=" {{ avatar.images.url }} "
+                             alt="{{ request.user.username }} image" />
+                      {% else %}
+                        <img class="h-6 w-6 rounded-full"
+                             src="{% static 'users/bonnie-green.png' %}"
+                             alt="{{ request.user.username }} image" />
+                      {% endif %}
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <p class="mb-0.5 truncate text-base font-semibold leading-none text-gray-900 dark:text-white">
+                        {% trans user.first_name %} {% trans user.last_name %}
+                      </p>
+                      <p class="mb-1 truncate text-sm font-normal text-primary-700 dark:text-primary-500">{% trans user.email %}</p>
+                      <p class="text-xs font-medium text-gray-500 dark:text-gray-400">
+                        {% trans 'Last seen:' %} {{ user.last_login|timesince }}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="inline-flex w-auto items-center xl:w-full 2xl:w-auto">
+                    <a href="{% url 'users:update' %}"
+                       class="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-center text-sm font-medium text-gray-900 hover:bg-gray-100 focus:ring-4 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Update</a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="mb-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6 2xl:col-span-2">
+          <h3 class="mb-4 text-xl font-semibold dark:text-white">{% trans "Language" %}</h3>
+          <div class="mb-4">
+            <label for="settings-language"
+                   class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+              {% trans "Select language" %}
+            </label>
+            {% get_available_languages as LANGUAGES %} {% get_language_info_list for LANGUAGES as languages %}
+            <select id="settings-language"
+                    name="languages"
+                    class="block w-full rounded-lg border-gray-300 bg-gray-50 p-2.5 text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500 sm:text-sm">
+              {% for lang in languages %}<option>{{ lang.name_local }}</option>{% endfor %}
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="col-span-2">
+        <div class="mb-4 rounded-lg p-4 shadow-sm sm:p-6 2xl:col-span-2">
+          <div class="flow-root">
+            <h3 class="text-xl font-semibold dark:text-white">{% trans "Comments" %}</h3>
+            <p class="text-sm font-normal text-gray-500 dark:text-gray-400">{% trans "You can View Your Chapter Comments" %}</p>
+            <div class="divide-y divide-gray-200 dark:divide-gray-700">
+              {% with user.comments.all as comments %}
+                <!-- Item 1 -->
+                <div class="flex items-center justify-between py-4">
+                  <table class="table table-xs w-full text-left text-sm text-gray-500 dark:text-gray-400">
+                    {% block table.thead %}
+                      <thead class="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                          <th scope="col" class="px-3 py-1.5">{% trans 'Name' %}</th>
+                          <th scope="col" class="px-3 py-1.5">{% trans 'Body' %}</th>
+                        </tr>
+                      </thead>
+                    {% endblock table.thead %}
+                    {% block table.tbody %}
+                      <tbody>
+                        <tr class="border-b hover:bg-gray-100 dark:border-gray-600 dark:hover:bg-gray-700">
+                          <td class="px-2 py-1.5">{% trans 'A new comment' %}</td>
+                          <td class="px-2 py-1.5">{% trans 'This is a comment' %}</td>
+                        </tr>
+                        <tr class="border-b hover:bg-gray-100 dark:border-gray-600 dark:hover:bg-gray-700">
+                          <td class="px-2 py-1.5">{% trans 'Another new comment' %}</td>
+                          <td class="px-2 py-1.5">{% trans 'This is another comment' %}</td>
+                        </tr>
+                      </tbody>
+                    {% endblock table.tbody %}
+                  </table>
+                </div>
+                {% block pagination %}
+                  <div class="sticky bottom-0 right-0 flex w-full flex-row items-center justify-between border-t border-gray-200 bg-white p-1 dark:bg-gray-800">
+                    <div class="mb-4 inline-flex items-center sm:mb-0">
+                      <button type="button"
+                              class="inline-flex cursor-pointer justify-center rounded p-1 text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:text-white">
+                        <svg class="h-7 w-7"
+                             fill="currentColor"
+                             viewBox="0 0 20 20"
+                             xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd">
+                          </path>
+                        </svg>
+                      </button>
+                      <button type="button"
+                              class="mr-2 inline-flex cursor-pointer justify-center rounded p-1 text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:text-white">
+                        <svg class="h-7 w-7"
+                             fill="currentColor"
+                             viewBox="0 0 20 20"
+                             xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd">
+                          </path>
+                        </svg>
+                      </button>
+                      <span class="text-sm text-gray-700 dark:text-gray-400">
+                        {% trans 'Page' %}
+                        <span class="font-semibold text-gray-900 dark:text-white">
+                          {% with comments.number as pagenumber %}
+                            {% blocktrans %} {{ pagenumber }} {% endblocktrans %}
+                          {% endwith %}
+                        </span>
+                        {% trans 'to' %}
+                        <span class="font-semibold text-gray-900 dark:text-white">
+                          {% with table.paginator.num_pages as pages %}
+                            {% blocktrans %} {{ pages }} {% endblocktrans %}
+                          {% endwith %}
+                        </span>
+                        {% trans 'of' %}
+                        <span class="font-semibold text-gray-900 dark:text-white">
+                          {% with comments.paginator.count as totalcomics %}
+                            {% blocktrans %} {{ totalcomics }} {% endblocktrans %}
+                          {% endwith %}
+                        </span>
+                        {% trans 'Entries' %}
+                      </span>
+                    </div>
+                    <div class="mt-2 inline-flex h-6 items-center -space-x-px text-sm xs:mt-0">
+                      <div class="flex">
+                        <button type="button"
+                                class="ms-0 flex h-6 items-center justify-center rounded-s-lg border border-e-0 border-gray-300 bg-white px-3 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                          <span class="sr-only">{% trans 'Previous' %}</span>
+                          <svg class="h-2.5 w-2.5 rtl:rotate-180"
+                               aria-hidden="true"
+                               xmlns="http://www.w3.org/2000/svg"
+                               fill="none"
+                               viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4" />
+                          </svg>
+                        </button>
+                      </div>
+                      <div class="flex">
+                        <button type="button"
+                                aria-current="page"
+                                class="z-10 flex h-6 items-center justify-center border border-blue-300 bg-blue-50 px-1 leading-tight text-blue-600 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">
+                          1
+                        </button>
+                        <button type="button"
+                                disabled
+                                class="flex h-6 items-center justify-center border border-gray-300 bg-white px-1 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                          2
+                        </button>
+                      </div>
+                      <div class="flex">
+                        <button type="button"
+                                class="flex h-6 items-center justify-center rounded-e-lg border border-gray-300 bg-white px-3 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                          <span class="sr-only">{% trans 'Next' %}</span>
+                          <svg class="h-2.5 w-2.5 rtl:rotate-180"
+                               aria-hidden="true"
+                               xmlns="http://www.w3.org/2000/svg"
+                               fill="none"
+                               viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                {% endblock pagination %}
+              {% endwith %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

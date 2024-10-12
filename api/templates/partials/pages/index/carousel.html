@@ -1,0 +1,60 @@
+{% load static i18n %}
+
+<div class="loop owl-carousel full owl-loaded">
+  <div>
+    <div class="carousel-root">
+      <div class="carousel-slider carousel" style="width: 100%">
+        <ul class="control-dots">
+          <li class="dot"
+              value="0"
+              role="button"
+              tabindex="0"
+              aria-label="slide item 1"></li>
+          <li class="dot selected"
+              value="1"
+              role="button"
+              tabindex="0"
+              aria-label="slide item 2"></li>
+          <li class="dot"
+              value="2"
+              role="button"
+              tabindex="0"
+              aria-label="slide item 3"></li>
+          <li class="dot"
+              value="3"
+              role="button"
+              tabindex="0"
+              aria-label="slide item 4"></li>
+          <li class="dot"
+              value="4"
+              role="button"
+              tabindex="0"
+              aria-label="slide item 5"></li>
+          <li class="dot"
+              value="5"
+              role="button"
+              tabindex="0"
+              aria-label="slide item 6"></li>
+          <li class="dot"
+              value="6"
+              role="button"
+              tabindex="0"
+              aria-label="slide item 7"></li>
+        </ul>
+        <button type="button"
+                aria-label="previous slide / item"
+                class="control-arrow control-prev control-disabled"></button>
+        <div class="slider-wrapper axis-horizontal">
+          <ul class="slider animated"
+              style="transform: translate3d(-200%, 0px, 0px);
+                     transition-duration: 350ms">
+            {% include "partials/pages/index/carousel_item.html" %}
+          </ul>
+        </div>
+        <button type="button"
+                aria-label="next slide / item"
+                class="control-arrow control-next control-disabled"></button>
+      </div>
+    </div>
+  </div>
+</div>

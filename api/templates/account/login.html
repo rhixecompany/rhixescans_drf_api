@@ -1,0 +1,100 @@
+{% extends "account/base_entrance.html" %}
+
+{% load static i18n widget_tweaks allauth account socialaccount %}
+
+{% block head_title %}
+  {% trans "Sign In" %}
+{% endblock head_title %}
+{% block content %}
+  <p class="mb-6 text-center text-sm">{% trans "Login to your account" %}</p>
+  <form method="post">
+    {% csrf_token %}
+    {% for hidden_field in form.hidden_fields %}{{ hidden_field.errors }} {{ hidden_field }}{% endfor %}
+    {{ form.non_form_errors }}
+    <div class="relative mb-4">
+      <svg xmlns="http://www.w3.org/2000/svg"
+           viewBox="0 0 24 24"
+           fill="currentColor"
+           aria-hidden="true"
+           data-slot="icon"
+           class="absolute left-3 top-6 mr-10 size-4 -translate-y-1/2 transform">
+        <path d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z"></path>
+        <path d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z"></path>
+      </svg>
+      <div class="space-y-2">
+        {% render_field form.login class='border-input ring-offset-background placeholder:text-muted-foreground bg-secondarybackground flex h-10 w-full rounded-xl border p-6 pl-10 text-sm text-white placeholder-gray-400 file:border-0 file:bg-transparent file:text-sm file:font-medium focus:outline-none focus:ring-1 focus:ring-white focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50' %}
+        <div class="ml-3 text-xs text-red-400">{{ form.login.errors }}</div>
+      </div>
+    </div>
+    <div class="relative mb-4">
+      <svg xmlns="http://www.w3.org/2000/svg"
+           viewBox="0 0 24 24"
+           fill="currentColor"
+           aria-hidden="true"
+           data-slot="icon"
+           class="absolute left-3 top-6 mr-10 size-4 -translate-y-1/2 transform">
+        <path fill-rule="evenodd" d="M12 1.5a5.25 5.25 0 0 0-5.25 5.25v3a3 3 0 0 0-3 3v6.75a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3v-6.75a3 3 0 0 0-3-3v-3c0-2.9-2.35-5.25-5.25-5.25Zm3.75 8.25v-3a3.75 3.75 0 1 0-7.5 0v3h7.5Z" clip-rule="evenodd">
+        </path>
+      </svg>
+      <div class="space-y-2">
+        {% render_field form.password class='border-input ring-offset-background placeholder:text-muted-foreground bg-secondarybackground flex h-10 w-full rounded-xl border p-6 pl-10 text-sm text-white placeholder-gray-400 file:border-0 file:bg-transparent file:text-sm file:font-medium focus:outline-none focus:ring-1 focus:ring-white focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50' %}
+        <div class="ml-3 text-xs text-red-400">{{ form.password.errors }}</div>
+        <svg xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 24 24"
+             fill="currentColor"
+             aria-hidden="true"
+             data-slot="icon"
+             class="absolute right-3 top-4 size-4 -translate-y-1/2 transform cursor-pointer">
+          <path d="M3.53 2.47a.75.75 0 0 0-1.06 1.06l18 18a.75.75 0 1 0 1.06-1.06l-18-18ZM22.676 12.553a11.249 11.249 0 0 1-2.631 4.31l-3.099-3.099a5.25 5.25 0 0 0-6.71-6.71L7.759 4.577a11.217 11.217 0 0 1 4.242-.827c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113Z">
+          </path>
+          <path d="M15.75 12c0 .18-.013.357-.037.53l-4.244-4.243A3.75 3.75 0 0 1 15.75 12ZM12.53 15.713l-4.243-4.244a3.75 3.75 0 0 0 4.244 4.243Z">
+          </path>
+          <path d="M6.75 12c0-.619.107-1.213.304-1.764l-3.1-3.1a11.25 11.25 0 0 0-2.63 4.31c-.12.362-.12.752 0 1.114 1.489 4.467 5.704 7.69 10.675 7.69 1.5 0 2.933-.294 4.242-.827l-2.477-2.477A5.25 5.25 0 0 1 6.75 12Z">
+          </path>
+        </svg>
+      </div>
+    </div>
+    <div class="mb-4 flex items-center justify-between">
+      <div>
+        <div class="flex items-center">
+          {% render_field form.remember class='ring-offset-background focus-visible:ring-ring data-[state=checked]:text-primary-foreground peer size-4 shrink-0 rounded border border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary' %}
+          <div class="ml-3 text-xs text-red-400">{{ form.remember.errors }}</div>
+          <span class="ml-2 pt-[-300px] text-xs font-semibold">{{ form.remember.label }}</span>
+        </div>
+      </div>
+      <a href="{% url 'account_reset_password' %}"
+         class="cursor-pointer text-xs font-semibold hover:underline">{% trans "Forgot Password?" %}</a>
+    </div>
+    <button type="submit"
+            class="text-md w-full rounded-lg bg-purple-600 py-2 font-semibold text-white hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-600">
+      {% trans "Login" %}
+    </button>
+  </form>
+  <div class="mt-4 text-center text-xs text-gray-400">
+    {% trans "Not a member?" %}
+    <!-- -->
+    <a class="text-xs font-semibold text-white hover:underline"
+       href='{% url "account_signup" %}'>{% trans "Create New Account" %}</a>
+  </div>
+  <div class="my-4 flex items-center">
+    <div class="flex-grow border-t border-[#35383F]"></div>
+    <span class="mx-2 text-sm font-semibold">{% trans "Or continue with" %}</span>
+    <div class="flex-grow border-t border-[#35383F]"></div>
+  </div>
+  <a href="{% provider_login_url 'google' %}">
+    <div class="bg-secondarybackground flex cursor-pointer flex-row justify-center space-y-4 rounded-[18px] border-[2px] border-[#121212] p-2">
+      <div class="flex h-10 w-96 items-center justify-center rounded-full">
+        <img alt="Google"
+             loading="lazy"
+             width="24"
+             height="24"
+             decoding="async"
+             data-nimg="1"
+             class="mr-3 h-6 w-6"
+             style="color: transparent"
+             src='{% static "svg/google.webp" %}' />
+        {% trans "Continue with Google" %}
+      </div>
+    </div>
+  </a>
+{% endblock content %}

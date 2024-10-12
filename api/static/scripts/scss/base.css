@@ -1,0 +1,12 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-family: "Fira Sans Bold", sans-serif;
+}
+body {
+  margin: 0 !important;
+  font-family: "Fira Sans Bold", sans-serif;
+}

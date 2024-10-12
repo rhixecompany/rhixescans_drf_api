@@ -1,0 +1,58 @@
+python-slugify==8.0.4  # https://github.com/un33k/python-slugify
+Pillow==10.4.0  # https://github.com/python-pillow/Pillow
+argon2-cffi==23.1.0  # https://github.com/hynek/argon2_cffi
+asgiref==3.8.1
+whitenoise==6.7.0  # https://github.com/evansd/whitenoise
+redis==5.0.8  # https://github.com/redis/redis-py
+hiredis==3.0.0  # https://github.com/redis/hiredis-py
+celery==5.4.0  # pyup: < 6.0  # https://github.com/celery/celery
+django-celery-beat==2.7.0  # https://github.com/celery/django-celery-beat
+django-celery-results==2.5.1
+flower==2.0.1  # https://github.com/mher/flower
+
+# Django
+# ------------------------------------------------------------------------------
+django==5.1.1  # pyup: < 5.1  # https://www.djangoproject.com/
+django-environ==0.11.2  # https://github.com/joke2k/django-environ
+django-model-utils==4.5.1  # https://github.com/jazzband/django-model-utils
+django-allauth[mfa]==64.0.0  # https://github.com/pennersr/django-allauth
+django-crispy-forms==2.3  # https://github.com/django-crispy-forms/django-crispy-forms
+# crispy-bootstrap5==2024.2  # https://github.com/django-crispy-forms/crispy-bootstrap5
+crispy-tailwind
+django-redis==5.4.0  # https://github.com/jazzband/django-redis
+# Django REST Framework
+djangorestframework==3.15.2  # https://github.com/encode/django-rest-framework
+django-cors-headers==4.4.0  # https://github.com/adamchainz/django-cors-headers
+# DRF-spectacular for api documentation
+drf-spectacular==0.27.2  # https://github.com/tfranzel/drf-spectacular
+django-webpack-loader==3.1.0  # https://github.com/django-webpack/django-webpack-loader
+django-filter==24.2
+django-simple-captcha==0.6.0
+django-recaptcha==4.0.0
+django-htmx==1.17.3
+django-widget-tweaks==1.5.0
+django-tables2==2.7.0
+django-render-block==0.9.2
+django-ckeditor==6.7.1
+django-ckeditor-5==0.2.13
+django-admin-sortable2==2.2.2
+django-formtools==2.5.1
+django-formset-js-improved==0.5.0.3
+django-import-export==3.2.0
+django-unfold==0.37.0
+Scrapy
+scrapy-redis==0.7.3
+celery-progress[redis]==0.3
+dateparser==1.2.0
+olefile==0.47
+django-modeltranslation==0.19.7
+django-dynamic-formsets==0.0.8
+django-forms-dynamic==1.0.0
+jwt
+requests_oauthlib
+tzdata==2024.2
+django-silk==5.2.0
+defusedxml 
+olefile
+djangorestframework-simplejwt
+

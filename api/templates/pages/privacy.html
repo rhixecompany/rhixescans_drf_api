@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% load static i18n %}
+
+{% block title %}
+    {% trans 'privacy' %}
+{% endblock title %}
+{% block content %}
+    <div class="grid grid-cols-1 px-4 pt-6 dark:bg-gray-900">
+        <div class="col-span-full mb-4 xl:mb-2">
+            <div x-data="{bands: [], genres: []}"
+                 x-init="bands = await (await fetch('/api/bands/')).json()">
+                {% render_field form.genre autocomplete="off" @change="genres = changeGenres($el, genres)" %}
+                <hr />
+                <template x-for="band in bands.filter(b => genres.includes(b.genre))">
+                    <div>
+                        <p x-text="`${band.name} - ${band.genre}`"></p>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+    <script>
+      function changeGenres(el, genres) {
+        const genre = el.value
+        console.log(genres, genre)
+        // if (genres.indexOf(genre) != -1) {
+        if (genres.includes(genre)) {
+          return genres.filter(g => g != genre)
+        } else {
+          return [...genres, genre]
+        }
+      }
+    </script>
+{% endblock content %}
